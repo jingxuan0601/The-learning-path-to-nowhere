@@ -1,3 +1,4 @@
+
 ### String     
 ```str.title()``` 每个单词的首字母大写     
 ```str.upper()```     
@@ -79,7 +80,7 @@ def func(*paras) # 接受任意数量的参数
 	for para in paras
 		...
 ```   
-···   
+``` 
 def func(para1, para2, **paras)  # 接受任意数量的键值对参数
 	for key, value in paras.items()  
 		...  
