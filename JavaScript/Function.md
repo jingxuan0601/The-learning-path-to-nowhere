@@ -87,3 +87,9 @@ sayColor().call(o) // blue, 使用apply()或者call()来扩充作用域最大的
 o.sayColor = sayColor();
 o.sayColor() // blue, 如果不用call()，就只能先把sayColor()放入对象o中，然后再通过o来调用它的sayColor()   
 ```   
+#### bind()  
+创建一个函数的实例，其this值会被绑定到传给bind()函数的的值  
+```  
+var objectSayColor = sayColor.bind(o);
+objectSayColor(); //blue, this is o
+```
