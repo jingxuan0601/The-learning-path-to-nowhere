@@ -32,12 +32,11 @@ function factorial(num) {
 		return 1;
 	}
 	 else {
-	 	return num * factorial(num - 1)
+	 	return num * factorial(num - 1); // 函数和factorial这个函数指针是紧密耦合的，假如factorial指向了另一个函数，原来这个函数的执行将会受到影响。
+	 	return num * arguments.callee(num - 1); // 用 argument.callee解除耦合，保证不论引用函数时使用的什么名字，都能完成正确的递归调用  
 	 }
 }
 ```   
-以上代码函数和factorial这个函数指针是紧密耦合的，假如factorial指向了另一个函数，原来这个函数的执行将会受到影响。   
-把```return num * factorial(num - 1)```改成```return num * arguments.callee(num - 1)```就能解除耦合，保证不论引用函数时使用的什么名字，都能完成正确的递归调用  
 ##### this   
 this指向函数的执行环境对象   
 ##### this.caller   
@@ -56,7 +55,7 @@ outer() //打印outer函数的源代码
 ### 函数的其他属性和方法  
 ##### length  
 表示函数希望接受的命名参数的个数  
-###### prototype   
+##### prototype   
 不可枚举，不可用for-in  
 ##### apply(), call()  
 设置函数体内this对象的值，扩充函数赖以生存的作用域  
@@ -73,7 +72,6 @@ function callSum(num1, num2) {
 	return sum.call(this, num1, num2);
 }
 ```   
-扩充函数的作用域   
 ```   
 window.color = "red";
 var o = {color: "blue"};
@@ -84,10 +82,8 @@ function sayColor() {
 sayColor();  // red
 sayColor().call(this) // red, this is window
 sayColor().call(window) //red
-sayColor().call(o) // blue
+sayColor().call(o) // blue, 使用apply()或者call()来扩充作用域最大的好处是对象和方法直接不需要有任何的耦合关系   
 
 o.sayColor = sayColor();
-o.sayColor() // blue
+o.sayColor() // blue, 如果不用call()，就只能先把sayColor()放入对象o中，然后再通过o来调用它的sayColor()   
 ```   
-使用apply()或者call()来扩充作用域最大的好处是对象和方法直接不需要有任何的耦合关系   
-如果上面的代码不用call()，就只能先把sayColor()放入对象o中，然后再通过o来调用它的sayColor()   
