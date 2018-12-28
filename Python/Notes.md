@@ -5,7 +5,8 @@
 ```str.lower()```     
 ```str.rstrip()``` 删除字符串左边开始的空白     
 ```str.lstrip()``` 删除右边结尾的空白     
-```str.strip()``` 删除两头的空白     
+```str.strip()``` 删除两头的空白   
+```for ch in str``` 迭代字符串        
      
 ```3 ** 2``` 平方     
 ```str(num)``` 数字转成字符串     
@@ -29,12 +30,14 @@
 ```do something for value in arr``` 列表解析     
 ```ele in arr``` 特定值是否在列表中     
 ```for ele in arr:``` 遍历，不要忘了最后的冒号     
-```arr[inclusiveStartIndex``` : exclusiveEndIndex] 数组切片     
+```arr[inclusiveStartIndex``` : exclusiveEndIndex] 数组切片,倒数第一个元素索引是-1     
 ```a = arr[:]``` 复制列表     
-```if arr``` 判断列表是否为空     
+```if arr``` 判断列表是否为空
+```[x * x for x in range(1, 11) if x % 2 == 0]``` 列表生成式       
 
-### 元组 - 不可修改元组的元素     
-```dimensions = (d1, d2)``` 列表用方括号，元组用圆括号表示     
+### Tuple - 不可修改元组的元素     
+```dimensions = (d1, d2)``` 列表用方括号，元组用圆括号表示   
+```tuple[:3]```tuple也可以做切片  
 
 ```and``` &&     
 ```or``` ||     
@@ -42,8 +45,8 @@
 ### Dictionary     
 ```dic = {key: value}```     
 ```del dic['key']```     
-```for key, value in dic.item()：``` 遍历字典     
-```for key in dic.keys()：```  or  for key in dict     
+```for key, value in dic.items()：``` 遍历字典     
+```for key in dic.keys()：```  or  for ```key in dict``` dict的存储不是按照list顺序排列的，所以迭代出的顺序不一样      
 ```for key in sorted(dict.keys())：```  顺序遍历所有键     
 ```for value in dict.values()：```     
 ```for value in set(dict.values())：``` 遍历所有不重复的值     
@@ -59,7 +62,31 @@ else
 # 如果要执行所有符合条件的语句，不用elif，而用多个独立的if语句     
 ```
 
-```input("message")``` 中止程序等待用户输入    
+```
+from collections import Iterable
+isinstance(obj, Iterable) 
+```  
+判断对象是否可迭代  
+
+### generator 边计算边循环，用来储存算法
+``` g = (x * x for x in range(10)) #把列表生成式的[]换成() ```  
+``` next(g) ``` 打印generator的值要一个个call next来计算出下一个的值  
+``` for n in g ```   或用迭代  
+```
+def fib(max):
+	n, a, b = 0, 0, 1
+	while n < max:
+		yield b
+		a, b = b, a + b
+		n = n + 1
+	return 'done'
+```  
+如果函数中包含yield，就是一个generator  
+函数是顺序执行，而generator每次调用next执行遇到yield返回，再次执行是从上次返回的yield处继续执行
+ 
+
+```input("message")``` 中止程序等待用户输入   
+
 ### while     
 ```while ...:```     
 
