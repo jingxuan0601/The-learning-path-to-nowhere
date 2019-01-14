@@ -1,21 +1,3 @@
-### Reference Type  
-```  
-var value = "25";
-var number = Number(value); //保存基本类型的值
-alert(typeof number); // number
-var obj = new Number(value);  // 保存number的实例
-alert(typeof obj) // Object
-```  
-基本类型和引用类型的区别  
-typeof 基本类型 // boolean  
-typeof 引用类型 // object
-instanceof 基本类型 // false  
-instanceof引用类型  //true  
-
-### Object  
-```instanceof``` 检测对象的类型  
-
-
 ###创建对象的模式   
 ####factory   
 ```
@@ -95,7 +77,7 @@ Person.prototype.name = ""; # 在person1的声明后面修改prototype，person1
 Person.protytype = {}; # 但如果重写了prototypt,person1.prototype仍然指向原来的prototypt
 ```   
 
-#####组合使用构造函数模式和原型模式  
+#####constructor + prototype  
 reference type的property放在Object上，用constructor初始化，不在实例之间共享。其他property放在prototype上  
 ```
 	function Person(...) {
