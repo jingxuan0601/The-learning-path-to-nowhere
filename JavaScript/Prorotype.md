@@ -1,5 +1,5 @@
-###创建对象的模式   
-####factory   
+### 创建对象的模式   
+#### factory   
 ```
 	function createPerson(name, age, job) {
 		var o = new Object();
@@ -14,7 +14,7 @@
 	var person1 = createPerson(...);
 ```
 
-####constructor pattern  
+#### constructor pattern  
 ``` 
 	function Person(name, age, job) {
 		...
@@ -36,7 +36,7 @@ problem: 以sayName function为例，每个实例（person1, person2）上都有
 ```  
 problem: 尽管现在sayName定义在全局上，其scope并不全局，而只能为Person的object所用。且假如有多个这样的需求，将会有很多个这样的全局方法。  
 
-####prototype pattern  
+#### prototype pattern  
 ```  
 	function Person() {
 	}
@@ -53,7 +53,7 @@ problem: 尽管现在sayName定义在全局上，其scope并不全局，而只�
 ```getPrototypeOf: Object.getPrototypeOf(person1) === Person.prototype```  
 ```delete person1.name```delete property from object
 
-#####区分object上的property和prototype上的property  
+##### 区分object上的property和prototype上的property  
 ```hasOwnProperty: person1.hasOwnProperty("name")``` 判断property存在于object还是prototype，true-存在object上，false-存在prototype上  
 ```in: property in object``` 只要能从object上访问到property就返回true，因此无论property在object上还是prototype上都返回true。 因此hasOwnproperty和in结合起来可以判断property在object上还是object上  
 ```for property in object```枚举object和prototype上的properties  
@@ -77,7 +77,7 @@ Person.prototype.name = ""; # 在person1的声明后面修改prototype，person1
 Person.protytype = {}; # 但如果重写了prototypt,person1.prototype仍然指向原来的prototypt
 ```   
 
-#####constructor + prototype  
+##### constructor + prototype  
 reference type的property放在Object上，用constructor初始化，不在实例之间共享。其他property放在prototype上  
 ```
 	function Person(...) {
@@ -91,7 +91,7 @@ reference type的property放在Object上，用constructor初始化，不在实�
 	}
 ```   
  
-#####dynamic prototype pattern
+##### dynamic prototype pattern
 把所有信息都封装在构造函数中，通过检测某个方法是否有效来决定是否把方法声明在prototype上  
 ```
 	function Person(...) {
