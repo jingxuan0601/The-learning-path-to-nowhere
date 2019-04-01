@@ -1,4 +1,4 @@
-####依靠原型链实现继承  
+#### 依靠原型链实现继承  
 ``` 
 	function SuperType()｛
 		this.property = true;
@@ -18,21 +18,21 @@
 	alert(instance.getSubType()); //return false;
 ```  
 
-#####instanceof
+##### instanceof
 ```
 	alert(instance instanceof Object); //true
 	alert(instance instanceof SuperType); //true
 	alert(instance instanceof SubType); //true
 ```    
 
-#####isPrototypeOf
+##### isPrototypeOf
 ```
 	alert(Object.prototype.isPrototypeOf(instance)); //true
 	alert(SuperType.prototype.isPrototypeOf(instance)); //true
 	alert(SubType.prototype.isPrototypeOf(instance)); //true
 ```   
 
-#####单纯依靠原型链实现继承的问题
+##### 单纯依靠原型链实现继承的问题
 1. reference property:
 ``` 
 	function SuperType() {
@@ -43,7 +43,7 @@
 ``` 
 2. 不能向超类型的构造函数传递参数
 
-####constructor stealing + prototype
+#### constructor stealing + prototype
 ```
 	function SuperType(name) {
 		this.name = name;
@@ -60,7 +60,7 @@
 	SubType.prototype = new SuperType(); //继承原型链上的方法，从而实现方法重用
 ``` 
 
-#####原型式继承  Object.create()
+##### 原型式继承  Object.create()
 ``` 
 var person = {
 	name="Nocholas",
