@@ -15,3 +15,5 @@
 - ctrl + ]  
 
 - 2次Ctrl+Alt+D- 用'Document this'给js or ts加注释  
+
+- Extensions: ctrl + Shift + K
